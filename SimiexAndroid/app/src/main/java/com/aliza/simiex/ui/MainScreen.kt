@@ -17,9 +17,14 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.aliza.simiex.ui.components.BottomNavigationBar
 import com.aliza.simiex.ui.theme.design_system.SystemTheme
 import com.aliza.simiex.utils.constants.ERROR_NETWORK
+import com.aliza.simiex.utils.constants.HOME_SCREEN
+import com.aliza.simiex.utils.constants.PROFILE_SCREEN
+import com.aliza.simiex.utils.constants.REPORT_SCREEN
 import com.aliza.simiex.utils.net.NetworkChecker
 import com.aliza.simiex.utils.ui_response_system.KeyboardAwareComponent
 import com.aliza.simiex.utils.ui_response_system.ShowToast
@@ -39,9 +44,19 @@ fun MainScreen(networkChecker: NetworkChecker = koinInject()) {
     }
 
     val navController = rememberNavController()
+    val screensWithBottomBar = listOf(
+        HOME_SCREEN, REPORT_SCREEN, PROFILE_SCREEN
+    )
 
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
         Scaffold(
+            bottomBar = {
+                val currentBackStackEntry = navController.currentBackStackEntryAsState().value
+                val currentDestination = currentBackStackEntry?.destination?.route
+                if (currentDestination in screensWithBottomBar) {
+                    BottomNavigationBar(navController)
+                }
+            },
             modifier = Modifier
                 .fillMaxSize(),
             containerColor = SystemTheme.colors.background,

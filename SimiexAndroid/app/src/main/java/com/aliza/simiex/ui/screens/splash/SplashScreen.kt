@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import com.aliza.simiex.data.session.SessionManager
 import com.aliza.simiex.ui.screens.login.LoginScreen
+import com.aliza.simiex.utils.constants.HOME_SCREEN
 import org.koin.compose.koinInject
 
 @SuppressLint("CoroutineCreationDuringComposition")
@@ -32,15 +33,16 @@ fun SplashScreen(
             SplashWidget(
                 modifier = Modifier,
                 onNavigateTo = {
-                    // TODO onNavigateTo(HOME_SCREEN)
+                    onNavigateTo(HOME_SCREEN)
                 }
             )
         }
+
         false -> {
             LoginScreen(
                 modifier = Modifier,
                 onNavigateTo = {
-                    // TODO onNavigateTo(HOME_SCREEN)
+                    onNavigateTo(HOME_SCREEN)
                     keyboardController?.hide()
                 }
             )
