@@ -17,12 +17,12 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.rememberNavController
 import com.aliza.simiex.ui.theme.design_system.SystemTheme
+import com.aliza.simiex.utils.constants.ERROR_NETWORK
 import com.aliza.simiex.utils.net.NetworkChecker
 import com.aliza.simiex.utils.ui_response_system.KeyboardAwareComponent
 import com.aliza.simiex.utils.ui_response_system.ShowToast
-import com.aliza.simiex.utils.ui_response_system.loading.LoadingType
-import com.aliza.simiex.utils.ui_response_system.loading.LoadingWidget
 import kotlinx.coroutines.launch
 import org.koin.compose.koinInject
 
@@ -38,6 +38,8 @@ fun MainScreen(networkChecker: NetworkChecker = koinInject()) {
         }
     }
 
+    val navController = rememberNavController()
+
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
         Scaffold(
             modifier = Modifier
@@ -45,10 +47,16 @@ fun MainScreen(networkChecker: NetworkChecker = koinInject()) {
             containerColor = SystemTheme.colors.background,
         ) { paddingValues ->
 
+            NavGraph(
+                navController = navController,
+                constantTopPadding = paddingValues.calculateTopPadding(),
+                constantBottomPadding = paddingValues.calculateBottomPadding()
+            )
+
             if (!isNetworkAvailable)
                 KeyboardAwareComponent { keyboardHeight ->
                     ShowToast(
-                        message = " ارتباط با اینترنت برقرار نیست.",
+                        message = ERROR_NETWORK,
                         duration = 3000,
                         toastAlignment = Alignment.BottomCenter,
                         modifier = Modifier.padding(

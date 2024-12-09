@@ -2,12 +2,16 @@ package com.aliza.simiex.utils.di
 
 import androidx.room.Room
 import com.aliza.simiex.data.db.AppDatabase
+import com.aliza.simiex.data.net.LoginParse
+import com.aliza.simiex.data.repository.LoginRepository
 import com.aliza.simiex.data.session.SessionManager
+import com.aliza.simiex.ui.screens.login.LoginViewModel
 import com.aliza.simiex.utils.di.CheckConnection.provideCM
 import com.aliza.simiex.utils.di.CheckConnection.provideNR
 import com.aliza.simiex.utils.net.NetworkChecker
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
+import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 val appModule = module {
@@ -28,10 +32,12 @@ val appModule = module {
     single { SessionManager() }
 
     //api
-
+    single { LoginParse() }
 
     //Repository
+    single<LoginRepository> { LoginRepository(get()) }
 
     //viewModel
+    viewModel { LoginViewModel(get()) }
 
 }
