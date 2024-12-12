@@ -2,9 +2,12 @@ package com.aliza.simiex.utils.di
 
 import androidx.room.Room
 import com.aliza.simiex.data.db.AppDatabase
+import com.aliza.simiex.data.net.HomeParse
 import com.aliza.simiex.data.net.LoginParse
+import com.aliza.simiex.data.repository.HomeRepository
 import com.aliza.simiex.data.repository.LoginRepository
 import com.aliza.simiex.data.session.SessionManager
+import com.aliza.simiex.ui.screens.home.HomeViewModel
 import com.aliza.simiex.ui.screens.login.LoginViewModel
 import com.aliza.simiex.utils.di.CheckConnection.provideCM
 import com.aliza.simiex.utils.di.CheckConnection.provideNR
@@ -33,11 +36,14 @@ val appModule = module {
 
     //api
     single { LoginParse() }
+    single { HomeParse() }
 
     //Repository
     single<LoginRepository> { LoginRepository(get()) }
+    single<HomeRepository> { HomeRepository(get()) }
 
     //viewModel
     viewModel { LoginViewModel(get()) }
+    viewModel { HomeViewModel(get()) }
 
 }
