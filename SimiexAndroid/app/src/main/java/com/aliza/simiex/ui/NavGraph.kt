@@ -3,6 +3,7 @@ package com.aliza.simiex.ui
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.ScrollState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.Dp
 import androidx.navigation.NavHostController
@@ -12,6 +13,7 @@ import com.aliza.simiex.ui.screens.home.HomeScreen
 import com.aliza.simiex.ui.screens.profile.ProfileScreen
 import com.aliza.simiex.ui.screens.report.ReportScreen
 import com.aliza.simiex.ui.screens.splash.SplashScreen
+import com.aliza.simiex.ui.theme.design_system.SystemTheme
 import com.aliza.simiex.utils.constants.HOME_SCREEN
 import com.aliza.simiex.utils.constants.PROFILE_SCREEN
 import com.aliza.simiex.utils.constants.REPORT_SCREEN
@@ -22,6 +24,7 @@ fun NavGraph(
     navController: NavHostController,
     constantTopPadding: Dp,
     constantBottomPadding: Dp,
+    scrollState: ScrollState,
 ) {
     NavHost(
         navController = navController,
@@ -52,20 +55,23 @@ fun NavGraph(
         }
         composable(HOME_SCREEN) {
             HomeScreen(
-                constantTopPadding = constantTopPadding,
-                constantBottomPadding = constantBottomPadding
+                constantTopPadding = constantTopPadding + SystemTheme.dimensions.spacing80,
+                constantBottomPadding = constantBottomPadding,
+                scrollState = scrollState
             )
         }
         composable(REPORT_SCREEN) {
             ReportScreen(
                 constantTopPadding = constantTopPadding,
-                constantBottomPadding = constantBottomPadding
+                constantBottomPadding = constantBottomPadding,
+                scrollState = scrollState
             )
         }
         composable(PROFILE_SCREEN) {
             ProfileScreen(
                 constantTopPadding = constantTopPadding,
-                constantBottomPadding = constantBottomPadding
+                constantBottomPadding = constantBottomPadding,
+                scrollState = scrollState
             )
         }
     }

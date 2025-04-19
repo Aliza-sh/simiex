@@ -3,6 +3,7 @@ package com.aliza.simiex.utils.extensions
 import com.aliza.simiex.utils.net.NetworkChecker
 import kotlinx.coroutines.flow.StateFlow
 import org.koin.java.KoinJavaComponent.inject
+import java.text.DecimalFormat
 
 fun isInternetAvailable(): StateFlow<Boolean> {
     val networkChecker: NetworkChecker by inject(NetworkChecker::class.java)
@@ -26,4 +27,13 @@ fun String.validatePhoneNumber(): Boolean {
 
 fun String.isValidPassword(): Boolean {
     return this.length >= 6
+}
+
+fun String.insertComma(): String {
+    val number = this.toIntOrNull()
+    return if (number != null) {
+        DecimalFormat("#,###.##").format(number)
+    } else {
+        this
+    }
 }

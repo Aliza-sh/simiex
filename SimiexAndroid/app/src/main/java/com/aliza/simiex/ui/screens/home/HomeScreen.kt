@@ -1,10 +1,10 @@
 package com.aliza.simiex.ui.screens.home
 
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -24,6 +24,7 @@ fun HomeScreen(
     constantTopPadding: Dp,
     constantBottomPadding: Dp,
     viewModel: HomeViewModel = activityViewModel(),
+    scrollState: ScrollState
 ) {
     val services = viewModel.services
     val damages = viewModel.damages
@@ -35,7 +36,7 @@ fun HomeScreen(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .verticalScroll(rememberScrollState())
+                .verticalScroll(scrollState)
                 .padding(top = constantTopPadding, bottom = constantBottomPadding)
         ) {
             ServiceWidget(
