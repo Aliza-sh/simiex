@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Simiex</string>
+
+    <!--parse config-->
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+    <string name="back4app_app_id">Na7DZpi8qOG1L5LB0rHgfTcb0wDPDB87a4N17Pb4</string>
+    <string name="back4app_client_key">530I24zdo0whHsQMDsHoOttW3EIPqo0HF9kB2eup</string>
+
+</resources>
