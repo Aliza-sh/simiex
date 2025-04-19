@@ -13,6 +13,7 @@ import com.aliza.simiex.ui.theme.design_system.SystemTheme
 
 enum class LoadingType {
     ROTATING_INDICATOR,
+    LOADING_INDICATOR,
     ROTATING_INDICATOR_WITH_LOGO,
     ROTATING_INDICATOR_WITH_LOGO_WITH_ALPHA
 }
@@ -41,6 +42,12 @@ fun LoadingWidget(
                 indicatorColor = indicatorColor,
                 backgroundColor = backgroundColor,
                 strokeWidth = strokeWidth
+            )
+
+            LoadingType.LOADING_INDICATOR -> LoadingIndicator(
+                animating = true,
+                color = SystemTheme.colors.primary,
+                indicatorSpacing = SystemTheme.dimensions.spacing8,
             )
 
             LoadingType.ROTATING_INDICATOR_WITH_LOGO -> RotatingIndicatorWithLogo(

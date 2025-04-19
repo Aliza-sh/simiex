@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.aliza.simiex.ui.screens.ai.AiBottomSheet
 import com.aliza.simiex.ui.components.BottomNavigationBar
 import com.aliza.simiex.ui.components.header.HeaderWidget
 import com.aliza.simiex.ui.theme.design_system.SystemTheme
@@ -69,6 +70,8 @@ fun MainScreen(networkChecker: NetworkChecker = koinInject()) {
             }
     }
 
+    var showAssistantImg by remember { mutableStateOf(false) }
+    var showAiBottomSheet by remember { mutableStateOf(false) }
 
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
         Scaffold(
@@ -86,8 +89,6 @@ fun MainScreen(networkChecker: NetworkChecker = koinInject()) {
             NavGraph(
                 navController = navController,
                 constantTopPadding = paddingValues.calculateTopPadding(),
-                constantBottomPadding = paddingValues.calculateBottomPadding()
-            )
                 constantBottomPadding = paddingValues.calculateBottomPadding(),
                 scrollState = scrollState
             )
@@ -110,6 +111,13 @@ fun MainScreen(networkChecker: NetworkChecker = koinInject()) {
                     }
                 )
 
+            if (showAiBottomSheet)
+                AiBottomSheet(
+                    onShowBottomSheet = {
+                        showAssistantImg = !showAssistantImg
+                        showAiBottomSheet = it
+                    },
+                )
 
             //Toast Network
             if (!isNetworkAvailable)
