@@ -58,6 +58,27 @@ class SystemIcon {
         @Composable
         get() = ImageVector.vectorResource(id = R.drawable.ic_show_category)
 
+    val inventory: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.img_inventory)
+
+    val assistant: Painter
+        @Composable
+        get() = painterResource(id = R.drawable.img_assistant)
+
+    val send: ImageVector
+        @Composable
+        get() = ImageVector.vectorResource(id = R.drawable.ic_send)
+
+    val microphone: ImageVector
+        @Composable
+        get() = ImageVector.vectorResource(id = R.drawable.ic_microphone)
+
+    val bot: ImageVector
+        @Composable
+        get() = ImageVector.vectorResource(id = R.drawable.ic_bot)
+
+
 }
 
 internal val LocalSystemIcon = staticCompositionLocalOf { SystemIcon() }

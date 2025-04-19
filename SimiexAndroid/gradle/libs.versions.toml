@@ -8,6 +8,7 @@ espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.9.3"
 composeBom = "2024.04.01"
+constraintlayoutCompose = "1.0.1"
 
 parse = "4.3.0"
 ksp = "1.9.22-1.0.16"
@@ -15,6 +16,7 @@ room = "2.6.1"
 navigationCompose = "2.8.1"
 koin = "4.0.0"
 coilCompose = "2.5.0"
+datastorePreferences = "1.1.1"
 haze = "0.7.3"
 
 [libraries]
@@ -33,6 +35,7 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 parse-platform = { group = "com.github.parse-community.Parse-SDK-Android", name = "parse", version.ref = "parse"}
+androidx-constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "constraintlayoutCompose" }
 
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
@@ -43,6 +46,8 @@ androidx-navigation-compose = { group = "androidx.navigation", name = "navigatio
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
 koin-androidx-compose-navigation = { module = "io.insert-koin:koin-androidx-compose-navigation", version.ref = "koin" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
 
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 

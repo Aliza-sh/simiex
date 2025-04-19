@@ -3,7 +3,7 @@ package com.aliza.simiex.ui.theme
 import androidx.compose.ui.graphics.Color
 
 val Primary = Color(0xFF006BE5)
-val PrimaryContainer = Color(0xFFD2E1F7)
+val PrimaryContainer = Color(0xFFF2F8FF)
 val White = Color(0xFFFFFFFF)
 val Background = Color(0xFFEDF0F3)
 
